@@ -65,7 +65,7 @@ function parseText(txt){
 onmessage = function(e){
 	data = e.data;
 	var reader;
-	if (FileReaderSync) {
+	if (FileReaderSync) { //O firefox δεν υποστηρίζει το FileReader σε Workers αλλά μόνο το FileReaderSync
 		reader = new FileReaderSync();
 		parseText(reader.readAsText(data.value));
 		return;
