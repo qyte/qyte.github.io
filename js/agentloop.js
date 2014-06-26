@@ -93,6 +93,9 @@ onmessage = function(e){
 			break;
 		case 'ACLmessage':
 			agent.updateInfo(data.otherarea);
+			var area = agent.sendInfo(data.fromid);
+			if (area !== null)
+				postMessage({'cmd':'sendACL', 'fromid':agent.getId(),'otherid':data.fromid,'area': area});
 			break;
 		case 'pathFound':
 			optimalPath = data.optPath;

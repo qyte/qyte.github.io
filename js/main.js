@@ -119,7 +119,7 @@ function processagentMsg(e) {
         case 'sendACL':
             AgentMsgCount[data.fromid]++;
             AgentRcvMsgCount[data.otherid]++;
-            workers[data.otherid].postMessage({'cmd':'ACLmessage','otherarea':data.area});
+            workers[data.otherid].postMessage({'cmd':'ACLmessage', 'fromid': data.fromid ,'otherarea':data.area});
             break;
         case 'pathFind':
             pathfindWorker.postMessage({cmd:'run',startLoc:AgentLocations[0],endLoc:bombLocation, knownArea:data.knownArea});
