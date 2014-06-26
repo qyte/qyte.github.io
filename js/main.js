@@ -270,7 +270,7 @@ function drawObstacles() {
 }
 
 function drawAgents(){
-    ctx.fillStyle = 'greenyellow';
+    ctx.fillStyle = 'limegreen';
     ctx.fillRect(AgentLocations[0][1] * GridSize, AgentLocations[0][0] * GridSize, GridSize, GridSize);
     var idx = document.getElementById("agentSelector").selectedIndex;
     idx--;
