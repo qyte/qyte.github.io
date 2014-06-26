@@ -258,7 +258,7 @@ function drawObstacles() {
     for (var i = 0; i < RawLayout.length; i++) {
         for (var j = 0; j < RawLayout[i].length; j++) {
             if(RawLayout[i][j]==='*'){
-                ctx.fillStyle = 'firebrick';
+                ctx.fillStyle = 'khaki';
                 ctx.fillRect(j * GridSize, i * GridSize, GridSize, GridSize);
             }
             if(RawLayout[i][j]==='B'){
@@ -270,12 +270,12 @@ function drawObstacles() {
 }
 
 function drawAgents(){
-    ctx.fillStyle = 'forestgreen';
+    ctx.fillStyle = 'greenyellow';
     ctx.fillRect(AgentLocations[0][1] * GridSize, AgentLocations[0][0] * GridSize, GridSize, GridSize);
     var idx = document.getElementById("agentSelector").selectedIndex;
     idx--;
     for (var i = 1; i < AgentLocations.length; i++) {
-        ctx.fillStyle = idx===i?'aqua':'blue';
+        ctx.fillStyle = idx===i?'magenta':'blue';
         ctx.fillRect(AgentLocations[i][1] * GridSize, AgentLocations[i][0] * GridSize, GridSize, GridSize);
     };
 }
