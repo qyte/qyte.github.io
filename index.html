@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Multi-Agent System - Disarm Bomb</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/bootstrap-select.min.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a id="mainTitle" class="navbar-brand" href="#">Disarm Bomb MAS</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a id="falseinput" href="#">Load File...</a></li>
+            <li id='labeledSelector'><p class="navbar-text">Select Agent View:</p>
+            <select id='agentSelector' class="btn dropdown-toggle btn-default" style="margin-top: 9px;"><option role="menuitem">All</option></select></li>
+            <li><a id="run" href="#"><i class="glyphicon glyphicon-play"></i> Run</a></li>
+            <li><a id="pause" href="#"><i class="glyphicon glyphicon-pause"></i> Pause</a></li>
+            <li><a id="reset" href="#"><i class="glyphicon glyphicon-trash"></i> Reset</a></li>
+            <li><a id="stats" href="#"><i class="glyphicon glyphicon-stats"></i> Stats</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="jumbotron">
+      <div class="container" style="padding-top:4px">
+        <canvas id="mainDisplay" style="border:1px solid #d3d3d3;margin-left:auto;margin-right:auto;display:block;"></canvas>
+      </div>
+    </div>
+    <div id="modalForm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="resultsHeaderText" aria-hidden="true">
+      <div class="modal-dialog" style="margin:7% auto">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="resultsHeaderText">Result Statistics</h4>
+          </div>
+          <div class="modal-body">
+            <div class="panel panel-default">
+              <table class="table"></table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <input type="file" id="fileinput" onchange='readfile(this)' style="display:none;"/>
+  </body>
+</html>
