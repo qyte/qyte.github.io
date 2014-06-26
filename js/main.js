@@ -262,7 +262,7 @@ function drawObstacles() {
                 ctx.fillRect(j * GridSize, i * GridSize, GridSize, GridSize);
             }
             if(RawLayout[i][j]==='B'){
-                ctx.fillStyle = 'red';
+                ctx.fillStyle = 'crimson';
                 ctx.fillRect(j * GridSize, i * GridSize, GridSize, GridSize);
             }
         }
@@ -270,12 +270,12 @@ function drawObstacles() {
 }
 
 function drawAgents(){
-    ctx.fillStyle = 'lime';
+    ctx.fillStyle = 'forestgreen';
     ctx.fillRect(AgentLocations[0][1] * GridSize, AgentLocations[0][0] * GridSize, GridSize, GridSize);
     var idx = document.getElementById("agentSelector").selectedIndex;
     idx--;
     for (var i = 1; i < AgentLocations.length; i++) {
-        ctx.fillStyle = idx===i?'deepskyblue':'blue';
+        ctx.fillStyle = idx===i?'aqua':'blue';
         ctx.fillRect(AgentLocations[i][1] * GridSize, AgentLocations[i][0] * GridSize, GridSize, GridSize);
     };
 }
