@@ -277,7 +277,7 @@ function drawAgents(){
         if (idx < 2)
             ctx.fillStyle = 'blue';
         if (idx-1 === i)
-            ctx.fillStyle = '#FF00FF';
+            ctx.fillStyle = '#ff00ff';
         ctx.fillRect(AgentLocations[i][1] * GridSize, AgentLocations[i][0] * GridSize, GridSize, GridSize);
     };
 }
