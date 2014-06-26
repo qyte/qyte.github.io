@@ -1,4 +1,4 @@
-importScripts('pathfinding-browser.min.js');
+importScripts('lib/pathfinding-browser.min.js');
 
 var grid;
 
