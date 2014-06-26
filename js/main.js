@@ -221,7 +221,7 @@ function restart(){
         agentworker.postMessage({'cmd':'create','agentid':i,'numAgents':AgentLocations.length, 'initTable':RawLayout, 'bombLoc':bombLocation,'startLocation':AgentLocations[i]});
         workers.push(agentworker);
         AgentMsgCount.push(0);
-        if ( i < 2 ) {continue;}
+        if ( i < 1 ) {continue;}
         options.push('<option value="',i+1,'">Agent ',i, '</option>');
     }
     $('#agentSelector').empty().html(options.join(''));
