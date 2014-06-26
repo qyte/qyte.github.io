@@ -281,7 +281,7 @@ function drawAgents(){
 }
 
 function drawFog(area){
-    ctx.fillStyle = 'rgba(169,169,169,0.9)';
+    ctx.fillStyle = 'rgba(0,0,0,0.7)';
     for (var i = 0; i < area.length; i++)
         for (var j = 0; j < area[i].length; j++)
             if(!area[i][j])
