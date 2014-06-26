@@ -273,11 +273,9 @@ function drawAgents(){
     ctx.fillStyle = 'lime';
     ctx.fillRect(AgentLocations[0][1] * GridSize, AgentLocations[0][0] * GridSize, GridSize, GridSize);
     var idx = document.getElementById("agentSelector").selectedIndex;
+    idx--;
     for (var i = 1; i < AgentLocations.length; i++) {
-        if (idx < 2)
-            ctx.fillStyle = 'blue';
-        if (idx-1 === i)
-            ctx.fillStyle = '#ff00ff';
+        ctx.fillStyle = idx===i?'#ff00ff':'blue';
         ctx.fillRect(AgentLocations[i][1] * GridSize, AgentLocations[i][0] * GridSize, GridSize, GridSize);
     };
 }
