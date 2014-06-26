@@ -70,7 +70,7 @@ onmessage = function(e){
 		parseText(reader.readAsText(data.value));
 		return;
 	}
-	var reader = new FileReader();
+	reader = new FileReader();
 	reader.onload = function (e) {
 		parseText(e.target.result);
     }
