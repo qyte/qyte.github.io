@@ -258,7 +258,7 @@ function drawObstacles() {
     for (var i = 0; i < RawLayout.length; i++) {
         for (var j = 0; j < RawLayout[i].length; j++) {
             if(RawLayout[i][j]==='*'){
-                ctx.fillStyle = 'khaki';
+                ctx.fillStyle = 'coral';
                 ctx.fillRect(j * GridSize, i * GridSize, GridSize, GridSize);
             }
             if(RawLayout[i][j]==='B'){
