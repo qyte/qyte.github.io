@@ -1,22 +1,12 @@
-var bombloc = [];
-var AgentsLoc = [];
-var ZeroAgents = [];
-var initialTable = [];
-var curagent;
-
-//var reader = new FileReader();
-
 function parseText(txt){
-	AgentsLoc = [];
+	var bombloc = [];
+	var AgentsLoc = [];
+	var ZeroAgents = [];
+	var initialTable = [];
 	for (var i = 0; i < 10; i++) {
 		AgentsLoc.push(null);
 	};
 	var lines = txt.split(/\r\n|\n/);
-	/*if (lines[0].lastIndexOf('\r') === lines[0].length-1) { // σε περίπτωση που το NewLine = '\r\n'
-		for (var i = 0; i < lines.length; i++) {
-			lines[i] = lines[i].substring(0,lines[i].length-1)
-		}
-	}*/
 	initialTable = [];
 	var linelength = lines[0].length;
 	for(var i=0;i<lines.length;i++){
@@ -74,12 +64,16 @@ function parseText(txt){
 
 onmessage = function(e){
 	data = e.data;
+	var reader;
+	if (FileReaderSync) {
+		reader = new FileReaderSync();
+		parseText(reader.readAsText(data.value));
+		return;
+	}
 	var reader = new FileReader();
 	reader.onload = function (e) {
 		parseText(e.target.result);
-        /*output = e.target.result;
-        displayContents(output);*/
     }
     reader.readAsText(data.value);
-	parseText(data.value);
+	//parseText(data.value);
 }
