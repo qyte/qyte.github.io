@@ -3,10 +3,8 @@ var Agent = function(agentid,numAgents,initTable,bombLoc,startLocation){
 	var previousLoc = startLocation;
 	var currLoc = startLocation;
 
-	var bomberKnowsbombLoc = false;
+	//var bomberKnowsbombLoc = false;
 	var KnownArea = [];
-
-	var optimalPath = [];
 
 	function populateArea(){
 		for (var i = 0; i < initTable.length; i++) {
@@ -53,10 +51,10 @@ var Agent = function(agentid,numAgents,initTable,bombLoc,startLocation){
 		eligibleCells = [];
 		var x = currLoc[0];
 		var y = currLoc[1];
-		var maxWidth = initTable.length-1;
-		var maxHeight = initTable[0].length-1;
-		if (x > 0 && x < maxWidth) {
-			if (y > 0 && y < maxHeight) {
+		var maxX = initTable.length-1;
+		var maxY = initTable[0].length-1;
+		if (x > 0 && x < maxX) {
+			if (y > 0 && y < maxY) {
 				nearbyCells.push([x-1,y-1]);
 				nearbyCells.push([x-1,y]);
 				nearbyCells.push([x-1,y+1]);
@@ -73,7 +71,7 @@ var Agent = function(agentid,numAgents,initTable,bombLoc,startLocation){
 				nearbyCells.push([x+1,y]);
 				nearbyCells.push([x+1,y+1]);
 			}
-			if (y === maxHeight) {
+			if (y === maxY) {
 				nearbyCells.push([x-1,y-1]);
 				nearbyCells.push([x-1,y]);
 				nearbyCells.push([x,y-1]);
@@ -82,7 +80,7 @@ var Agent = function(agentid,numAgents,initTable,bombLoc,startLocation){
 			}
 		}
 		if (x===0) {
-			if (y > 0 && y < maxHeight) {
+			if (y > 0 && y < maxY) {
 				nearbyCells.push([x,y-1]);
 				nearbyCells.push([x,y+1]);
 				nearbyCells.push([x+1,y-1]);
@@ -94,14 +92,14 @@ var Agent = function(agentid,numAgents,initTable,bombLoc,startLocation){
 				nearbyCells.push([x+1,y]);
 				nearbyCells.push([x+1,y+1]);
 			}
-			if (y === maxHeight) {
+			if (y === maxY) {
 				nearbyCells.push([x,y-1]);
 				nearbyCells.push([x+1,y-1]);
 				nearbyCells.push([x+1,y]);
 			}
 		}
-		if (x === maxWidth) {
-			if (y > 0 && y < maxHeight) {
+		if (x === maxX) {
+			if (y > 0 && y < maxY) {
 				nearbyCells.push([x-1,y-1]);
 				nearbyCells.push([x-1,y]);
 				nearbyCells.push([x-1,y+1]);
@@ -113,7 +111,7 @@ var Agent = function(agentid,numAgents,initTable,bombLoc,startLocation){
 				nearbyCells.push([x-1,y+1]);
 				nearbyCells.push([x,y+1]);
 			}
-			if (y === maxHeight) {
+			if (y === maxY) {
 				nearbyCells.push([x-1,y-1]);
 				nearbyCells.push([x-1,y]);
 				nearbyCells.push([x,y-1]);
@@ -158,8 +156,7 @@ var Agent = function(agentid,numAgents,initTable,bombLoc,startLocation){
 		init: function(){
 			populateArea();
 			clearsentInfo();
-			//calculateEligibleCells();
-			optimalPath = [];
+			calculateEligibleCells();
 		},
 		getId: function(){
 			return agentid;
@@ -170,9 +167,6 @@ var Agent = function(agentid,numAgents,initTable,bombLoc,startLocation){
 		moveTo: function(newLoc){
 			previousLoc = currLoc;
 			currLoc = newLoc;
-			if (optimalPath.length > 0)
-				optimalPath.shift();
-			calculateEligibleCells();
 		},
 		getEligibleCells: function(){
 			calculateEligibleCells();
@@ -184,10 +178,9 @@ var Agent = function(agentid,numAgents,initTable,bombLoc,startLocation){
 		sendInfo: function(otherid){
 			if (sentcurrentInfo[otherid]) {return null;}
 			sentcurrentInfo[otherid] = true;
-			if(!otherid && KnownArea[bombLoc[0]][bombLoc[1]]) //Σε περίπτωση που σταματήσει να κινήται όταν μάθει ο πυροτεχνουργός την θέση της βόμβας
-				bomberKnowsbombLoc = true;
+			/*if(!otherid && KnownArea[bombLoc[0]][bombLoc[1]]) //Σε περίπτωση που σταματήσει να κινήται όταν μάθει ο πυροτεχνουργός την θέση της βόμβας
+				bomberKnowsbombLoc = true;*/
 			return KnownArea;
-			//postMessage({'cmd':'sendInfo','id':otherid, 'Area': KnownArea}); θα το αναλάβει το agentloop ως controller
 		},
 		updateInfo: function(otherKnownArea){
 			var clearinfo = false;
@@ -198,10 +191,10 @@ var Agent = function(agentid,numAgents,initTable,bombLoc,startLocation){
 						clearinfo = true;
 					}
 				}
-			}			
+			}
 			if(clearinfo){
 				clearsentInfo();
-				//calculateEligibleCells();
+				calculateEligibleCells();
 			}
 		}
 	}
