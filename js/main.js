@@ -154,7 +154,6 @@ function start(){
         return;
     }
     ticks = (new Date()).getTime();
-    $('#falseinput').attr('disabled', true);
     $('#run').hide();
     $('#pause').show();
     $('#reset').hide();
@@ -170,7 +169,6 @@ function pause(){
         return;
     }
     timeElapsed += (new Date()).getTime() - ticks;
-    $('#falseinput').attr('disabled', false);
     $('#run').show();
     $('#pause').hide();
     $('#reset').show();
@@ -298,6 +296,7 @@ $(document).ready( function() {
     $('#labeledSelector').hide();
     $('.jumbotron').hide();
     $('#falseinput').click(function(){
+        if (running) {return false;}
         $("#fileinput").click();
         return false;
     });
@@ -307,7 +306,7 @@ $(document).ready( function() {
     $('#reset').click(function(){ restart(); return false;});
     $('#stats').click(function(){ $('#modalForm').modal('show'); return false;});
     $('#agentSelector').change(function(){
-        if (running) {return}
+        if (running) {return true;}
         DrawCanvas();
     });
 })
