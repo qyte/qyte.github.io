@@ -17,15 +17,17 @@ function parseText(txt){
 		}
 		var linearr = [];
 		for (var j = 0; j < line.length; j++) {
-			switch(line[j]){
+			switch(line[j].toUpperCase()){
 				case ' ':
 				case '*':
 					linearr.push(line[j]);
 					break;
+				case 'Β'://Ελληνικό
 				case 'B':
 					bombloc = [i,j];
 					linearr.push(line[j]);
 					break;
+				case 'Α'://Ελληνικό
 				case 'A':
 					linearr.push(' ');
 					AgentsLoc[0] = [i,j];
