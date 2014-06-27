@@ -6,18 +6,18 @@ function parseText(txt){
 	for (var i = 0; i < 10; i++) {
 		AgentsLoc.push(null);
 	};
-	var lines = txt.split(/\r\n|\n/);
+	var lines = txt.split(/\r\n|\r|\n/);
 	initialTable = [];
 	var linelength = lines[0].length;
 	for(var i=0;i<lines.length;i++){
-		var line = lines[i];
+		var line = lines[i].toUpperCase();
 		if (lines[i].length != linelength) {  //Έλεγχος αν όλες οι γραμμές είναι ισομηκείς
 			postMessage({'cmd':'error','value':'Incompatible File'});
 			return;
 		}
 		var linearr = [];
-		for (var j = 0; j < line.length; j++) {
-			switch(line[j].toUpperCase()){
+		for (var j = 0; j < line.length; j++) {			
+			switch(line[j]){
 				case ' ':
 				case '*':
 					linearr.push(line[j]);
