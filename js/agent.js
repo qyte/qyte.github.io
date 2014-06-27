@@ -158,7 +158,7 @@ var Agent = function(agentid,numAgents,initTable,bombLoc,startLocation){
 		init: function(){
 			populateArea();
 			clearsentInfo();
-			calculateEligibleCells();
+			//calculateEligibleCells();
 			optimalPath = [];
 		},
 		getId: function(){
@@ -175,6 +175,7 @@ var Agent = function(agentid,numAgents,initTable,bombLoc,startLocation){
 			calculateEligibleCells();
 		},
 		getEligibleCells: function(){
+			calculateEligibleCells();
 			return eligibleCells;
 		},
 		getknownArea: function(){
@@ -200,7 +201,7 @@ var Agent = function(agentid,numAgents,initTable,bombLoc,startLocation){
 			}			
 			if(clearinfo){
 				clearsentInfo();
-				calculateEligibleCells();
+				//calculateEligibleCells();
 			}
 		}
 	}
