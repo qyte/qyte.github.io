@@ -154,7 +154,7 @@ function start(){
         return;
     }
     ticks = (new Date()).getTime();
-    $('#falseinput').hide();
+    $('#falseinput').addClass('disabled');
     $('#run').hide();
     $('#pause').show();
     $('#reset').hide();
@@ -170,7 +170,7 @@ function pause(){
         return;
     }
     timeElapsed += (new Date()).getTime() - ticks;
-    $('#falseinput').show();
+    $('#falseinput').removeClass('disabled');
     $('#run').show();
     $('#pause').hide();
     $('#reset').show();
