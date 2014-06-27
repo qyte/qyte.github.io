@@ -154,6 +154,7 @@ function start(){
         return;
     }
     ticks = (new Date()).getTime();
+    $('#falseinput').hide();
     $('#run').hide();
     $('#pause').show();
     $('#reset').hide();
@@ -169,6 +170,7 @@ function pause(){
         return;
     }
     timeElapsed += (new Date()).getTime() - ticks;
+    $('#falseinput').show();
     $('#run').show();
     $('#pause').hide();
     $('#reset').show();
